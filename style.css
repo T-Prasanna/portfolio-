@@ -14,18 +14,20 @@ body {
 
 /* Header */
 .header {
-  background-color: #1e293b;
+  background-color: #072e50;
   padding: 20px 40px;
-  position: sticky;
+  position: fixed;   /* always visible */
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
 }
 
 .nav-bar {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 750px; /* Adjust gap as needed */
+  
+  justify-content: space-between; /* fixed spacing */
 }
 
 .brand h1 {
@@ -36,6 +38,7 @@ body {
   text-decoration: none;
 }
 
+/* Desktop nav */
 .nav-list ul {
   list-style: none;
   display: flex;
@@ -52,6 +55,22 @@ body {
 
 .nav-list a:hover {
   color: #5ba9ca;
+}
+
+/* Hamburger design */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  height: 3px;
+  width: 25px;
+  background-color: #fff;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
 }
 
 /* Hero Section */
@@ -470,77 +489,71 @@ body {
   transform: scale(1.2);
 }
 
-/* Responsive */
+/* ---------- Responsive Navbar ---------- */
 @media (max-width: 768px) {
-  .about-section {
+  .nav-list ul {
+    display: none; /* hidden by default */
     flex-direction: column;
-    text-align: center;
+    background:  #072e50;
+    position: absolute;
+    top: 70px; /* just below header */
+    right: 20px;
+    width: 200px;
+    padding: 1rem;
+    border-radius: 10px;
+    z-index: 1000;
   }
 
-  .image-container {
-    margin-top: 20px;
+  /* When active → show menu */
+  .nav-list ul.active {
+    display: flex;
   }
 
-  .service-bottom,
-  .contact-items {
+  /* show hamburger on mobile */
+  .hamburger {
+    display: flex;
+  }
+}
+/* Header background */
+.header {
+  background-color: #072e50;   /* navbar background */
+  padding: 20px 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Mobile menu background */
+@media (max-width: 768px) {
+  .nav-list ul {
+    display: none;
     flex-direction: column;
-    align-items: center;
+    background: #072e50;   /* changed from #111 */
+    position: absolute;
+    top: 70px; /* just below header */
+    right: 20px;
+    width: 200px;
+    padding: 1rem;
+    border-radius: 10px;
+    z-index: 1000;
+  }
+
+  .nav-list ul.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
   }
 }
 .header {
-  background-color:  #072e50;
+  background-color: #072e50;
   padding: 20px 40px;
   position: fixed;   /* change sticky to fixed */
   top: 0;
   left: 0;
   width: 100%;       /* make it span the entire width */
   z-index: 1000;
-}
-.nav-list ul.active {
-  display: flex;
-}
-/* Default hidden menu for mobile */
-.nav-list ul {
-  display: none;
-  flex-direction: column;
-  background: #111;
-  position: absolute;
-  top: 60px; /* below header */
-  right: 10px;
-  width: 200px;
-  padding: 1rem;
-  border-radius: 10px;
-  z-index: 1000;
-}
-
-/* Show when active */
-.nav-list ul.active {
-  display: flex;
-}
-
-/* Hamburger design */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.hamburger .bar {
-  height: 3px;
-  width: 25px;
-  background-color: #fff;
-  margin: 4px 0;
-  border-radius: 2px;
-  transition: 0.3s;
-}
-
-/* Responsive rules */
-@media (max-width: 768px) {
-  .nav-list ul {
-    display: none;
-  }
-
-  .hamburger {
-    display: flex;
-  }
 }
